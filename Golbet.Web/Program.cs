@@ -17,13 +17,18 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 
 builder.Services.AddScoped<IMatchRepository, MatchRepository>();
 
-builder.Services.AddScoped<IMatchRepository, MatchRepository>();
-
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddScoped<IMatchService, MatchService>();
 
 var app = builder.Build();
+
+// Seed initial data (applies migrations and inserts teams/matches if empty)
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await DbSeeder.SeedAsync(context);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
