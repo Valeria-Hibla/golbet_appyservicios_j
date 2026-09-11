@@ -5,12 +5,17 @@
 @using GolBet.Web.Helpers
 
 @model IEnumerable<GolBet.Services.DTOs.MatchDto>
-
 @{
-
-    ViewData["Title"] = "Partidos";
-
+    ViewData["Title"] = "Inicio";
 }
+
+<div class="text-center py-5">
+    <h1 class="display-4">⚽ Bienvenido a GolBet</h1>
+    <p class="lead">Consulta la cartelera y las cuotas de los partidos.</p>
+    <a class="btn btn-success btn-lg" asp-controller="Matches" asp-action="Index">
+        Ver partidos
+    </a>
+</div>
 
   
 
