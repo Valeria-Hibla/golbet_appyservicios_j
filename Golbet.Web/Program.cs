@@ -5,6 +5,11 @@ using GolBet.Services.Implementations;
 using GolBet.Services.Interfaces;
 using GolBet.Services.Mapping;
 using GolBet.Repositories.Interfaces;
+using System.Globalization;
+
+var culture = new CultureInfo("es-CO");
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
 
 var builder = WebApplication.CreateBuilder(args);
 
